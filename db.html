@@ -1,3 +1,1020 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Eliezer Vidal - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* AI-inspired animated background */
+        .ai-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            animation: aiFlow 20s ease-in-out infinite;
+        }
+
+        @keyframes aiFlow {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+            25% {
+                transform: scale(1.1) rotate(5deg);
+                filter: blur(1px);
+            }
+            50% {
+                transform: scale(0.95) rotate(-3deg);
+                filter: blur(2px);
+            }
+            75% {
+                transform: scale(1.05) rotate(2deg);
+                filter: blur(1px);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% {
+                filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.3));
+            }
+            100% {
+                filter: drop-shadow(0 0 40px rgba(118, 75, 162, 0.5));
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        /* AI Orb Animation */
+        .ai-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+            animation: orbPulse 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .ai-orb::before,
+        .ai-orb::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ai-orb::before {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, transparent 70%);
+            animation: orbPulse 3s ease-in-out infinite reverse;
+        }
+
+        .ai-orb::after {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.4) 0%, transparent 70%);
+            animation: orbPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skill-tag {
+            padding: 10px 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Profile Image with AI Animation */
+        .profile-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(102, 126, 234, 0.5);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .ai-orb-small {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .ai-orb-small:nth-child(1) {
+            top: 200%;
+            left: 200%;
+            animation-delay: 0s;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+        }
+
+        .ai-orb-small:nth-child(2) {
+            top: 600%;
+            right: 200%;
+            animation-delay: 1s;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, transparent 70%);
+            width: 80px;
+            height: 80px;
+        }
+
+        .ai-orb-small:nth-child(3) {
+            bottom: 200%;
+            left: 300%;
+            animation-delay: 2s;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.3) 0%, transparent 70%);
+            width: 120px;
+            height: 120px;
+        }
+
+        .ai-orb-small:nth-child(4) {
+            top: 300%;
+            right: 300%;
+            animation-delay: 3s;
+            background: radial-gradient(circle, rgba(120, 219, 255, 0.3) 0%, transparent 70%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .ai-circuit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            height: 1px;
+            animation: circuitPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(20px, -20px);
+            }
+            50% {
+                transform: translate(-10px, 10px);
+            }
+            75% {
+                transform: translate(-20px, -10px);
+            }
+        }
+
+        @keyframes circuitPulse {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Credentials Section */
+        .credentials {
+            padding: 150px 50px;
+        }
+
+        .credentials h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .credentials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .credential-group {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .credential-group:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .credential-info {
+            margin-bottom: 20px;
+        }
+
+        .credential-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .credential-info p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Credential Images Section */
+        .credential-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .credential-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .credential-thumbnail:hover {
+            transform: scale(1.1);
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Image Popup Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 800px;
+            max-height: 600%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+            animation: modalAppear 0.5s ease-out forwards;
+            border: 2px solid #667eea;
+            z-index: 2;
+        }
+
+        .modal-ai-orb {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            animation: modalOrbPulse 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .modal-ai-orb:nth-child(1) {
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .modal-ai-orb:nth-child(2) {
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 1s;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, transparent 70%);
+        }
+
+        .modal-ai-orb:nth-child(3) {
+            top: 50%;
+            left: -30px;
+            animation-delay: 0.5s;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.3) 0%, transparent 70%);
+            width: 80px;
+            height: 80px;
+        }
+
+        .modal-ai-orb:nth-child(4) {
+            bottom: 30%;
+            right: -30px;
+            animation-delay: 1.5s;
+            background: radial-gradient(circle, rgba(120, 219, 255, 0.3) 0%, transparent 70%);
+            width: 60px;
+            height: 60px;
+        }
+
+        @keyframes modalAppear {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalOrbPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.9;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 0, 0, 0.7);
+            transform: rotate(90deg);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            section {
+                padding: 80px 20px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .profile-container {
+                height: 300px;
+                margin-top: 40px;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- AI Background -->
+    <div class="ai-background"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="#hero">JEV</a>
+                <a href="#about">About</a>
+                <a href="#credentials">Credentials</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="ai-orb"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>John Eliezer Vidal</h1>
+                <p>A 3rd Year, BSIT Student</p>
+                <a href="#credentials" class="cta-button">View My Credentials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content scroll-reveal">
+                <div class="about-text">
+                    <h2>Hi! I'm Elie</h2>
+                    <p>I'm a passionate BSIT Student who thrives at the intersection of creativity and technology. With a keen eye for design and a deep understanding of modern development practices, I create digital experiences that not only look stunning but perform flawlessly.</p>
+                    <p>My journey in tech has been driven by curiosity and a desire to push boundaries. I believe in the power of innovative solutions that make a real difference.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Html</span>
+                        <span class="skill-tag">Css</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <!-- AI Circuit Lines -->
+                    <div class="ai-circuit">
+                        <div class="circuit-line" style="width: 80%; top: 10%; left: 10%; animation-delay: 0s;"></div>
+                        <div class="circuit-line" style="width: 60%; top: 30%; right: 20%; animation-delay: 0.5s;"></div>
+                        <div class="circuit-line" style="width: 70%; bottom: 20%; left: 15%; animation-delay: 1s;"></div>
+                        <div class="circuit-line" style="width: 50%; bottom: 40%; right: 25%; animation-delay: 1.5s;"></div>
+                    </div>
+                    
+                    <!-- Floating AI Orbs -->
+                    <div class="ai-orb-small"></div>
+                    <div class="ai-orb-small"></div>
+                    <div class="ai-orb-small"></div>
+                    <div class="ai-orb-small"></div>
+                    
+                    <!-- Profile Image -->
+                    <img src="469462783_2519587411579182_2539357274715388965_n.jpg" alt="John Eliezer Vidal" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Credentials Section -->
+    <section id="credentials" class="credentials">
+        <div class="container">
+            <h2 class="scroll-reveal">Featured Credentials</h2>
+            <div class="credentials-container">
+                <div class="credential-group scroll-reveal">
+                    <div class="credential-info">
+                        <h3>Bachelor of Science in IT Certification</h3>
+                        <p>Currently pursuing my degree with a focus on web development and UI/UX design.</p>
+                    </div>
+                    <div class="credential-images">
+                        <img src="Screenshot 2025-05-30 043950.png" alt="University Certificate" class="credential-thumbnail">
+                    </div>
+                </div>
+                
+                <div class="credential-group scroll-reveal">
+                    <div class="credential-info">
+                        <h3>High School Certification</h3>
+                        <p>Completed a comprehensive award for joining on our school projects.</p>
+                    </div>
+                    <div class="credential-images">
+                        <img src="Kulay Ginto Moderno at Elegante Award Certificate.png" alt="Web Dev Certificate" class="credential-thumbnail">
+                    
+                    </div>
+                </div>
+                
+                <div class="credential-group scroll-reveal">
+                    <div class="credential-info">
+                        <h3>Recent Projects</h3>
+                    </div>
+                    <div class="credential-images">
+                        <img src="Screenshot 2025-05-31 003023.png" alt="AI Certificate" class="credential-thumbnail">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal-overlay" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <div class="modal-ai-orb"></div>
+            <div class="modal-ai-orb"></div>
+            <div class="modal-ai-orb"></div>
+            <div class="modal-ai-orb"></div>
+            <img id="modalImage" class="modal-image" src="" alt="Credential">
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="scroll-reveal">
+                <h2>Connect with me !</h2>
+                <p>Ready to bring your ideas to life? I'm always excited to work on innovative projects and collaborate with forward-thinking peoples.</p>
+                <div class="contact-links">
+                    <a href="mailto:john@example.com" class="contact-link">
+                        Email me on<span>📧</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                         Add me on<span>💼</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        DM me on <span>🐙</span> 
+                    </a>
+                    <a href="#" class="contact-link">
+                        Contact me on <span>🐦</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        if (typeof observerOptions === 'undefined') {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Dynamic navigation background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+                nav.style.backdropFilter = 'blur(20px)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.1)';
+                nav.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Add subtle mouse movement parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const aiOrb = document.querySelector('.ai-orb');
+            if (aiOrb) {
+                aiOrb.style.transform = `translate(${-50 + mouseX * 5}%, ${-50 + mouseY * 5}%)`;
+            }
+            
+            const background = document.querySelector('.ai-background');
+            if (background) {
+                background.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px)`;
+            }
+        });
+
+        // Image modal functionality - FIXED VERSION
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close-modal');
+            const thumbnails = document.querySelectorAll('.credential-thumbnail');
+
+            // Click handler for thumbnails
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    modal.classList.add('active');
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                });
+            });
+
+            // Close modal when clicking X
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        // Create circuit lines dynamically
+        document.addEventListener('DOMContentLoaded', () => {
+            const circuitContainer = document.querySelector('.ai-circuit');
+            if (circuitContainer) {
+                for (let i = 0; i < 8; i++) {
+                    const line = document.createElement('div');
+                    line.className = 'circuit-line';
+                    line.style.width = `${Math.random() * 50 + 30}%`;
+                    line.style.top = `${Math.random() * 80 + 10}%`;
+                    line.style.left = `${Math.random() * 80 + 10}%`;
+                    line.style.animationDelay = `${Math.random() * 2}s`;
+                    circuitContainer.appendChild(line);
+                }
+            }
+        });
+
+        // Add some interactive sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.animation = 'sparkle 2s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Add sparkle animation keyframes
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle {
+                0% {
+                    opacity: 0;
+                    transform: scale(0) rotate(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1) rotate(180deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 3000);
+    </script>
+</body>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1011,4 +2028,5 @@
         setInterval(createSparkle, 3000);
     </script>
 </body>
+>>>>>>> cc410cc4bca2c69771790d46d915158843340bfb
 </html>
